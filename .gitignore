@@ -1,0 +1,26 @@
+# Mac Desktop Services Store
+.DS_Store
+
+# Windows Thumbnails
+Thumbs.db
+
+# Runtime Data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+
+# IDEs and Editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+.vscode/

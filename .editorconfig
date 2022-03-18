@@ -1,0 +1,58 @@
+# Version: 22.03
+# For more information about EditorConfig see: https://editorconfig.org
+
+# This file is the top-level .editorconfig file, after which EditorConfig
+# will stop looking for .editorconfig rule files to apply.
+root = true
+
+# All Files
+[*]
+charset = utf8
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Markdown
+[*.{md, mdx}]
+trim_trailing_whitespace = false
+
+# JSON
+[*.{json, webmanifest}]
+indent_size = 2
+
+# YAML
+[*.{yml, yaml}]
+indent_size = 2
+
+# XML and SVG
+[*.{xml, svg}]
+indent_size = 2
+
+# Bash
+[*.sh]
+end_of_line = lf
+
+# Makefile
+[Makefile]
+indent_style = tab
+
+# HTML
+[*.{html, htm}]
+indent_size = 2
+
+# CSS
+[*.{css, scss, sass, less, pcss}]
+indent_size = 2
+
+# JavaScript and TypeScript
+[*.{js, mjs, cjs, jsx, ts, mts, cts, tsx}]
+indent_size = 2
+
+# PHP
+[*.{php, phtml, phtm}]
+end_of_line = lf
+
+# Go
+[*.{go, mod}]
+indent_style = tab
