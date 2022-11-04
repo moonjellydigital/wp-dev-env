@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  web:
-    image: wordpress
+  wp:
+    image: wordpress:${WP_TAG:-latest}
     restart: always
     volumes:
       - wordpress:/var/www/html
@@ -9,38 +9,38 @@ services:
       - ./plugins:/var/www/html/wp-content/plugins/
       - ./themes:/var/www/html/wp-content/themes/
     ports:
-      - 8080:80
+      - ${WP_PORT:-8080}:80
     environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: exampleuser
-      WORDPRESS_DB_PASSWORD: examplepass
-      WORDPRESS_DB_NAME: exampledb
-      WORDPRESS_TABLE_PREFIX: wp
+      WORDPRESS_DB_HOST: wpdb
+      WORDPRESS_DB_USER: ${WPDB_USER:-exampleuser}
+      WORDPRESS_DB_PASSWORD: ${WPDB_PASS:-examplepass}
+      WORDPRESS_DB_NAME: ${WPDB_NAME:-exampledb}
+      WORDPRESS_TABLE_PREFIX: ${WPDB_TABLE_PREFIX:-wp_}
       WORDPRESS_DEBUG: 1
     depends_on:
-      - db
+      - wpdb
     networks:
       - wpnet
   adminer:
-    image: adminer
+    image: adminer:${ADMINER_TAG:-latest}
     restart: always
     ports:
-      - 8081:8080
+      - ${ADMINER_PORT:-8081}:8080
     depends_on:
-      - db
+      - wpdb
     networks:
       - wpnet
-  db:
-    image: mariadb:10.5
+  wpdb:
+    image: mariadb:${MARIADB_TAG:-10.5}
     restart: always
     ports:
-      - 6603:3306
+      - ${WPDB_PORT:-6603}:3306
     volumes:
-      - wpdbvol:/var/lib/mysql
+      - wpdbvol:/var/lib/mariadb
     environment:
-      MYSQL_DATABASE: exampledb
-      MYSQL_USER: exampleuser
-      MYSQL_PASSWORD: examplepass
+      MYSQL_DATABASE: ${WPDB_NAME:-exampledb}
+      MYSQL_USER: ${WPDB_USER:-exampleuser}
+      MYSQL_PASSWORD: ${WPDB_PASS:-examplepass}
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     networks:
       - wpnet
