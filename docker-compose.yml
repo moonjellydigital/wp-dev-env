@@ -17,6 +17,11 @@ services:
       WORDPRESS_DB_NAME: ${WPDB_NAME:-exampledb}
       WORDPRESS_TABLE_PREFIX: ${WPDB_TABLE_PREFIX:-wp_}
       WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DISABLE_FATAL_ERROR_HANDLER', true);
+        define('SCRIPT_DEBUG', true);
+        define('WP_ENVIRONMENT_TYPE', 'development');
+        define('WP_DEVELOPMENT_MODE', 'all');
     depends_on:
       - wpdb
     networks:
