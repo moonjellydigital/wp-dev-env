@@ -71,21 +71,34 @@ values.
 
 <details>
     <summary>When I make a new WordPress I'm getting an old version of WordPress/Adminer/PHP?</summary>
-    This happens because Docker caches the images you download. To get a fresh version of an image run
-    `docker pull <image name>:<tag>`.
+    <p>This happens because Docker caches the images you download. To get a fresh version of an image run:</p>
 
-    For example, to get the newest version of the WordPress image with the `latest` tag you would run
-    `docker pull wordpress:latest`.
+    <pre>docker pull &lt;image name&gt;:&lt;tag&gt;</pre>
+
+    <p>For example, to get the newest version of the WordPress image with the `latest` tag you would run:</p>
+    
+    <pre>docker pull wordpress:latest</pre>
 </details>
 
 <details>
     <summary>How do I change the PHP version for WordPress if it's already running?</summary>
-    **If you're using the `wordpress:latest` image**, download the newest version
-    from Docker Hub by running `docker pull wordpress:latest`. Then run `docker-compose up -d`.
-    The WordPress container will be recreated.
+    <p><b>If you're using the `wordpress:latest` image</b>, download the newest version
+    from Docker Hub by running:</p>
 
-    **If you set a particular tag in a `.env` file**, change the tag in the `.env`.
-    Then run `docker-compose up -d`. The WordPress container will be recreated.
+    <pre>docker pull wordpress:latest</pre>
+
+    <p>Then run:</p>
+
+    <pre>docker-compose up -d</pre>
+
+    <p>The WordPress container will be recreated.</p>
+
+    <p><b>If you set a particular tag in a `.env` file</b>, change the tag in the `.env`.
+    Then run:</p>
+
+    <pre>docker-compose up -d</pre>
+
+    <p>The WordPress container will be recreated.</p>
 </details>
 
 ## Docker Images
