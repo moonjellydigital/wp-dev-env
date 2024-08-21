@@ -26,6 +26,32 @@ services:
       - wpdb
     networks:
       - wpnet
+  wpcli:
+    image: wordpress:${WPCLI_TAG:-cli}
+    restart: always
+    user: 33:33
+    volumes_from:
+      - wp
+    environment:
+      WORDPRESS_DB_HOST: wpdb
+      WORDPRESS_DB_USER: ${WPDB_USER:-exampleuser}
+      WORDPRESS_DB_PASSWORD: ${WPDB_PASS:-examplepass}
+      WORDPRESS_DB_NAME: ${WPDB_NAME:-exampledb}
+      WORDPRESS_TABLE_PREFIX: ${WPDB_TABLE_PREFIX:-wp_}
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DISABLE_FATAL_ERROR_HANDLER', true);
+        define('SCRIPT_DEBUG', true);
+        define('WP_ENVIRONMENT_TYPE', 'development');
+        define('WP_DEVELOPMENT_MODE', 'all');
+    depends_on:
+      - wp
+      - wpdb
+    networks:
+      - wpnet
+    stdin_open: true
+    tty: true
+    working_dir: /var/www/html
   adminer:
     image: adminer:${ADMINER_TAG:-latest}
     restart: always
