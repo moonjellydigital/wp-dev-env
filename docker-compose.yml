@@ -65,7 +65,7 @@ services:
     image: mariadb:${MARIADB_TAG:-11.8.9}
     restart: always
     ports:
-      - ${WPDB_PORT:-6603}:3306
+      - ${WPDB_PORT:-3306}:3306
     volumes:
       - wpdbvol:/var/lib/mariadb
     environment:
